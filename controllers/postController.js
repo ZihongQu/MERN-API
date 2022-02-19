@@ -82,3 +82,14 @@ export const likePost = async (req, res) => {
     const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new : true});
     res.json(updatedPost);
 }
+
+export const getPostById = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const singlePost = await PostMessage.findById(id);
+        res.status(200).json(singlePost);
+    } catch (error) {
+        res.status(500).json({message: error});
+    }
+
+}
