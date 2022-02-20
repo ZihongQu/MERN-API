@@ -18,4 +18,6 @@ router.patch('/:id/likePost', auth, postController.likePost);
 
 router.get('/:id', postController.getPostById);
 
+router.post('/:id/addComment', auth, postController.addComment);
+
 export default router;

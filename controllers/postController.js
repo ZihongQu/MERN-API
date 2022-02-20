@@ -91,5 +91,18 @@ export const getPostById = async (req, res) => {
     } catch (error) {
         res.status(500).json({message: error});
     }
+}
 
+export const addComment = async (req, res) => {
+    const {comment}= req.body;
+    const{id} = req.params;
+    try {
+        const postToUpdate = await PostMessage.findById(id);
+        postToUpdate.comments.push(comment);
+    
+        const updated = await PostMessage.findByIdAndUpdate(id, postToUpdate, {new: true});
+        res.status(200).json(updated);
+    } catch (error) {
+        res.status(500).json({message: error});
+    }
 }
