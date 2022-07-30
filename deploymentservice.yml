@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-deployment
+  template:
+    metadata:
+      labels:
+        app: server-deployment
+    spec:
+      containers:
+        - name: server
+          image: 112358ann/api
+          ports:
+            - containerPort: 3005
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-service
+spec:
+  selector:
+    app: server-deployment
+  ports:
+    - port: 3005
+      targetPort: 3005
