@@ -1,23 +1,23 @@
-import Express from 'express';
-import * as postController from '../controllers/postController.js';
-import auth from '../middleware/auth.js';
+import Express from "express";
+import * as postController from "../controllers/postController.js";
+import auth from "../middleware/auth.js";
 var router = Express.Router();
 
 // Home page route.
-router.get('/', postController.getPosts);
+router.get("/", postController.getPosts);
 
-router.get('/search', postController.getPostsBySearch);
+router.get("/search", postController.getPostsBySearch);
 
-router.post('/createPost', auth, postController.createPost);
+router.post("/createPost", auth, postController.createPost);
 
-router.patch('/:id', auth, postController.updatePost);
+router.patch("/:id", auth, postController.updatePost);
 
-router.delete('/:id', auth, postController.deletePost);
+router.delete("/:id", auth, postController.deletePost);
 
-router.patch('/:id/likePost', auth, postController.likePost);
+router.patch("/:id/likePost", auth, postController.likePost);
 
-router.get('/:id', postController.getPostById);
+router.get("/:id", postController.getPostById);
 
-router.post('/:id/addComment', auth, postController.addComment);
+router.post("/:id/addComment", auth, postController.addComment);
 
 export default router;
