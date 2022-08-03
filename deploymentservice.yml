@@ -23,9 +23,11 @@ kind: Service
 metadata:
   name: server-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: server-deployment
   ports:
-    - port: 3005
+    - protocol: TCP
+      NodePort: 31000
+      port: 3005
       targetPort: 3005
