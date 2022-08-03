@@ -44,3 +44,5 @@ jobs:
     - name: Deploy to minikube
       run:
         kubectl apply -f deploymentservice.yml
+    - name: Interact with the cluster
+      run: kubectl get pods
