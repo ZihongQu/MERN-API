@@ -46,3 +46,5 @@ jobs:
         kubectl apply -f deploymentservice.yml
     - name: Interact with the cluster
       run: kubectl get pods
+    - name: Get Minikube IP
+      run: echo ${{ steps.minikube.outputs.ip }}
