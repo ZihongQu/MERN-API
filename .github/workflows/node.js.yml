@@ -38,6 +38,9 @@ jobs:
       with:
         push: true
         tags: 112358ann/api
+    - name: start minikube
+      id: minikube
+      uses: medyagh/setup-minikube@master
     - name: Deploy to minikube
       run:
         kubectl apply -f deploymentservice.yml
